@@ -1,7 +1,7 @@
 const http = require('http');
 
 async function testAuth() {
-  const baseUrl = 'http://localhost:3000/api/auth';
+  const baseUrl = `http://localhost:${process.env.PORT || 3011}/api/auth`;
   const cookieJar = { cookie: '' };
 
   async function request(method, path, body = null, headers = {}) {

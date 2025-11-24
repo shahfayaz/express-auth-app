@@ -29,7 +29,8 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const AUTH_EXPIRATION = parseInt(process.env.AUTH_EXPIRATION) || 3600000;
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: AUTH_EXPIRATION / 1000 }); // expiresIn is in seconds
 
     // Create session
     req.session.userId = user.id;
