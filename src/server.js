@@ -13,9 +13,20 @@ async function startServer() {
     await sequelize.sync({ force: false, alter: true }); 
     console.log('Database synchronized.');
 
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
+
+    // Initialize Socket.IO
+    const io = require('socket.io')(server, {
+      cors: {
+        origin: "*", // Allow all origins for now, configure as needed
+        methods: ["GET", "POST"]
+      }
+    });
+
+    require('./sockets')(io);
+
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
