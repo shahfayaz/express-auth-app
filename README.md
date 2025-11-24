@@ -9,6 +9,8 @@ A Node.js Express application with a complete authentication system using Sequel
 - **Security**: Password hashing with `bcryptjs`, secure HTTP-only cookies.
 - **Session Management**: Persistent sessions stored in the database using `connect-session-sequelize`.
 - **CORS**: Configured for Cross-Origin Resource Sharing.
+- **Real-time Communication**: Integrated Socket.IO for real-time bidirectional event-based communication.
+- **Robust Database Operations**: Standardized query execution with automatic transaction management and error logging.
 
 ## Prerequisites
 
@@ -66,6 +68,12 @@ Run the verification script to check database connection and model syncing:
 npm run verify
 ```
 
+### Verify Socket.IO
+Run the socket verification script to test real-time connection:
+```bash
+node verify-socket.js
+```
+
 ## API Endpoints
 
 -   `GET /`: Welcome message.
@@ -83,6 +91,8 @@ npm run verify
 -   `src/models/`: Sequelize models.
 -   `src/routes/`: API route definitions.
 -   `src/middleware/`: Custom middleware.
+-   `src/utils/`: Utility functions (e.g., database helper).
+-   `src/sockets/`: Socket.IO event handlers.
 
 ## License
 
